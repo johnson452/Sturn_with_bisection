@@ -14,11 +14,20 @@
 % is a multiple root of p, then V(a) − V(b) is the number of distinct real roots of P.
 % B: If a root is hit exactly during the search routines, the bounds are
 % slightly altered to fix this 
+% C: First coeff. is not allowed to be zero
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clc
 clear
 close all
+
+
+% Structure to save the data
+gkyl_root_intervals = struct('root_bound_lower', zeros(1, 4), ...
+                              'root_bound_upper', zeros(1, 4), ...
+                              'status', 0, ... % 0 - success.
+                              'niter', 0, ...
+                              'nroots', 0);
 
 % Overall tolerance
 tol = 1e-13;
@@ -36,13 +45,14 @@ poly_coeff = [1.0, 22/5, 313/50, 781/250, 2541/10000]; %3-distict roots, Shifted
 domain = [-3,3];
 
 % To match C implementation:
-%poly_coeff = reverse(poly_coeff);
-%poly_coeff = poly_coeff/poly_coeff[5];
+poly_coeff = flip(poly_coeff);
+poly_coeff = poly_coeff/poly_coeff(5);
+poly_coeff = poly_coeff(1:4);
+
+% Check that the first coefficient is not zero
 
 % Compute manually
 domains = find_root_intervals(poly_coeff,domain,tol);
-%fprintf("\nDomains result:\n")
-%disp(domains);
 
 %Compute the roots via ridders
 roots_via_ridders = ridders_roots(poly_coeff,domains);
