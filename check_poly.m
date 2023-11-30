@@ -18,8 +18,8 @@ if str_type == "Full"
         fprintf("Poly Cannot be fixed!\n");
     end
     iter = 0;
-    while(pR == 0 && iter < 3)
-        R = R - tol;
+    while(pR == 0 && iter <= 3)
+        R = R + tol;
         pR = eval_poly(p,R);
         iter = iter + 1;
     end
@@ -39,6 +39,7 @@ elseif str_type == "LIR"
     while(pI == 0 && iter <= 3)
         I = (R+L)/2.0 + (R-L)*(0.1*(iter+1));
         pI = eval_poly(p,I);
+        iter = iter + 1;
     end
     if iter == 3
         fprintf("Poly Cannot be fixed!\n");

@@ -15,6 +15,7 @@
 % B: If a root is hit exactly during the search routines, the bounds are
 % slightly altered to fix this 
 % C: First coeff. is not allowed to be zero
+% D: Bounds must be finite
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clc
