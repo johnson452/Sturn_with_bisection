@@ -38,12 +38,17 @@ tol = 1e-13;
 %poly_coeff = [1.5, -12.4, 0.5, 0.0, 5/6];
 %poly_coeff = [1.0, 1.0, 0.0, -1.0, -1.0]; % From wiki example
 %poly_coeff = [1.0, 0.0, -1.0, 0.0, 0.1]; % 4-real roots
-%poly_coeff = [3.85758, -6.77435, 0.136634, 4.77435, -1.99421]; % Test case working with Ammar
+poly_coeff = [3.85758, -6.77435, 0.136634, 4.77435, -1.99421]; % Test case working with Ammar
 % Results known to be: [v=-0.8385439363175684, v=0.6586252361470675, v=0.936058474752778, v=0.999974162134524]
 %poly_coeff = [1.0, 0.0, -1.0, 0.0, 0.0]; % 3-distinct roots
 %poly_coeff = [1e20, 0.0, -1.0, 0.0, 0.0]; % 3-distinct roots, large ordering
-poly_coeff = [1.0, 22/5, 313/50, 781/250, 2541/10000]; %3-distict roots, Shifted -1.1 to the left
+%poly_coeff = [1.0, 22/5, 313/50, 781/250, 2541/10000]; %3-distict roots, Shifted -1.1 to the left
+% Maxima: [x=-2.1,x=-0.1,x=-1.1]
 domain = [-3,3];
+
+%poly_coeff = [1.0, 3.1e-20, -1e+10, 0.0, -3.1e-2];
+%Maxima: [x=-70710.67849664079,x=70710.67774066873,x=-70710.67774066873,x=70710.67849664079]
+%domain = [-100000,100000];
 
 % To match C implementation:
 poly_coeff = flip(poly_coeff);
